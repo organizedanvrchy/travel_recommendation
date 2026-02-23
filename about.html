@@ -9,7 +9,7 @@
         <div id="navbar"></div>
 
         <div class="general">
-            <container class="about">
+            <div class="about">
                 <h1>ABOUT US</h1>
                 <p>
                     At WanderRain, we believe every journey should feel
@@ -20,22 +20,35 @@
                     comes after them, WanderRain is here to ensure your adventures 
                     are safe, smooth, and unforgettable.
                 </p>
-            </container>
-            <container class="team">
+            </div>
+            <div class="team">
                 <h2>OUR TEAM</h2>
                 <div>
-                    <img src="icons/profile.png">
-                    <h4>VIMAL RAMNARAIN</h4>
-                    <p>
-                        combines a passion for exploration with a sharp eye for detail, 
-                        helping design smart, weather-aware travel experiences that make 
-                        every journey smoother and more enjoyable.
-                    </p>
+                    <div class="teamMemberRow">
+                        <div>
+                            <img src="icons/profile.png" alt="Vimal Ramnarain">
+                            <h4>VIMAL RAMNARAIN</h4>
+                        </div>
+                        <p>
+                            Combines a passion for exploration with a sharp eye for detail, 
+                            helping design smart, weather-aware travel experiences that make 
+                            every journey smoother and more enjoyable.
+                        </p>
+                    </div>
+
+                    <div class="teamMemberRow">
+                        <div>
+                            <img src="icons/profile.png" alt="Vimal Ramnarain">
+                            <h4>JOHN DOE</h4>
+                        </div>
+                        <p>
+                            Passionate about helping travelers have smooth and worry-free journeys. 
+                            He is your go-to contact for questions, tips, or assistance with any of 
+                            our travel services.
+                        </p>
+                    </div>
                 </div>
-
-
-            </container>
-
+            </div>
             
             <div>
                 <ul class="iconList">
@@ -48,7 +61,7 @@
         </div>
 
         <script>
-            fetch("navbar.html")
+            fetch("navbar_no_search.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("navbar").innerHTML = data;

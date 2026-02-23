@@ -7,8 +7,9 @@
     </head>
     <body>
         <div id="navbar"></div>
+        <div id="searchResults" class="resultsContainer"></div>
 
-        <div class="home">
+        <div class="general">
             <h1>
                 ADVENTURE SHINES BRIGHTEST <br> 
                 AFTER THE RAIN.
@@ -18,7 +19,7 @@
                 From avoiding severe weather to discovering hidden experiences after the storm, <br>
                 we help you plan safer, smoother, and more memorable adventures.
             </p>
-            <button class="bookBtn">Book Now</button>
+            <button class="bookBtn" id="bookBtn">Book Now</button>
             <div>
                 <ul class="iconList">
                     <li><img src="icons/twitter.png"></li>
@@ -29,12 +30,6 @@
             </div>
         </div>
 
-        <script>
-            fetch("navbar.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("navbar").innerHTML = data;
-                });
-        </script>
+        <script src="travel_recommendation.js"></script>
     </body>
 </html>
