@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>WanderRain</title>
+        <link rel="stylesheet" href="./travel_recommendation.css">
+    </head>
+    <body>
+        <div id="navbar"></div>
+
+        <div class="home">
+            <h1>
+                ADVENTURE SHINES BRIGHTEST <br> 
+                AFTER THE RAIN.
+            </h1>
+            <p>
+                WanderRain is your guide to traveling smarter in any forecast. <br>
+                From avoiding severe weather to discovering hidden experiences after the storm, <br>
+                we help you plan safer, smoother, and more memorable adventures.
+            </p>
+            <button class="bookBtn">Book Now</button>
+            <div>
+                <ul class="iconList">
+                    <li><img src="icons/twitter.png"></li>
+                    <li><img src="icons/facebook.png"></li>
+                    <li><img src="icons/instagram.png"></li>
+                    <li><img src="icons/youtube.png"></li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar").innerHTML = data;
+                });
+        </script>
+    </body>
+</html>

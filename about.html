@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>About Us</title>
+        <link rel="stylesheet" href="./travel_recommendation.css">
+    </head>
+    <body>
+        <div id="navbar"></div>
+
+        <div class="general">
+            <container class="about">
+                <h1>ABOUT US</h1>
+                <p>
+                    At WanderRain, we believe every journey should feel
+                    confident, seamless, and inspiring — no matter the forecast. <br>
+                    Our mission is to help travelers plan smarter by combining 
+                    thoughtful destination insights with weather-aware guidance. <br>
+                    Whether you're avoiding storms or embracing the beauty that 
+                    comes after them, WanderRain is here to ensure your adventures 
+                    are safe, smooth, and unforgettable.
+                </p>
+            </container>
+            <container class="team">
+                <h2>OUR TEAM</h2>
+                <div>
+                    <img src="icons/profile.png">
+                    <h4>VIMAL RAMNARAIN</h4>
+                    <p>
+                        combines a passion for exploration with a sharp eye for detail, 
+                        helping design smart, weather-aware travel experiences that make 
+                        every journey smoother and more enjoyable.
+                    </p>
+                </div>
+
+
+            </container>
+
+            
+            <div>
+                <ul class="iconList">
+                    <li><img src="icons/twitter.png"></li>
+                    <li><img src="icons/facebook.png"></li>
+                    <li><img src="icons/instagram.png"></li>
+                    <li><img src="icons/youtube.png"></li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar").innerHTML = data;
+                });
+        </script>
+    </body>
+</html>
