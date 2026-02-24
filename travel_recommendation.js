@@ -66,58 +66,64 @@ fetch("navbar.html")
 
             if (!query) return;
 
-            let hasResults = false;
             const q = query.trim().toLowerCase();
+            let hasResults = false;
 
-            // Show all beaches if query is "beach" or "beaches"
+            // Track appended items to avoid duplicates
+            const appendedItems = new Set();
+
+            function appendCard(item) {
+                if (appendedItems.has(item.name)) return;
+                appendedItems.add(item.name);
+                const card = createCard(item);
+                resultsContainer.appendChild(card);
+                hasResults = true;
+            }
+
+            // Handle special cases for "beach"/"beaches"
             if (q === 'beach' || q === 'beaches') {
-                travelData.beaches?.forEach(beach => {
-                    resultsContainer.appendChild(createCard(beach));
-                    hasResults = true;
-                });
+                travelData.beaches?.forEach(appendCard);
             }
 
-            // Show all temples if query is "temple" or "temples"
+            // Handle special cases for "temple"/"temples"
             if (q === 'temple' || q === 'temples') {
-                travelData.temples?.forEach(temple => {
-                    resultsContainer.appendChild(createCard(temple));
-                    hasResults = true;
+                travelData.temples?.forEach(appendCard);
+            }
+
+            // Handle special cases for "country"/"countries"
+            if (q === 'country' || q === 'countries') {
+                travelData.countries?.forEach(country => {
+                    country.cities.forEach(appendCard);
                 });
             }
 
-            // Search countries/cities
+            /* *** General matching for cities, beaches, temples *** */
+            // Countries and their cities
             travelData.countries?.forEach(country => {
                 if (matchesQuery(country.name, q)) {
-                    country.cities.forEach(city => {
-                        resultsContainer.appendChild(createCard(city));
-                        hasResults = true;
-                    });
+                    country.cities.forEach(appendCard);
                 } else {
                     country.cities.forEach(city => {
-                        if (matchesQuery(city.name, q)) {
-                            resultsContainer.appendChild(createCard(city));
-                            hasResults = true;
-                        }
+                        if (matchesQuery(city.name, q)) appendCard(city);
                     });
                 }
             });
 
-            // Search beaches/temples by name
-            travelData.temples?.forEach(temple => {
-                if (matchesQuery(temple.name, q)) {
-                    resultsContainer.appendChild(createCard(temple));
-                    hasResults = true;
-                }
-            });
+            // Beaches by name (only if not keyword handled)
+            if (!(q === 'beach' || q === 'beaches')) {
+                travelData.beaches?.forEach(beach => {
+                    if (matchesQuery(beach.name, q)) appendCard(beach);
+                });
+            }
 
-            travelData.beaches?.forEach(beach => {
-                if (matchesQuery(beach.name, q)) {
-                    resultsContainer.appendChild(createCard(beach));
-                    hasResults = true;
-                }
-            });
+            // Temples by name (only if not keyword handled)
+            if (!(q === 'temple' || q === 'temples')) {
+                travelData.temples?.forEach(temple => {
+                    if (matchesQuery(temple.name, q)) appendCard(temple);
+                });
+            }
 
-            // No results
+            /** *** If no results, show message *** */
             if (!hasResults) {
                 const noResultCard = document.createElement('div');
                 noResultCard.classList.add('resultCard');
