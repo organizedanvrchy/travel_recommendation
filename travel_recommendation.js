@@ -103,7 +103,7 @@ fetch("navbar.html")
                 }
             });
 
-            // Search beaches/temples by name too
+            // Search beaches/temples by name
             travelData.temples?.forEach(temple => {
                 if (matchesQuery(temple.name, q)) {
                     resultsContainer.appendChild(createCard(temple));
