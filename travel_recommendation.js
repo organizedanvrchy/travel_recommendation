@@ -156,11 +156,13 @@ fetch("navbar.html")
     .catch(err => console.error('Error loading navbar:', err));
 
 /* *** Handle contact form submission *** */
-const submitBtn = document.getElementById('submitBtn');
-
-if (submitBtn) {
-    submitBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // prevent actual form submission
-        alert('Form submitted! Thank you for contacting us.');
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! Thank you for contacting us.');
+        });
+    }
+});
