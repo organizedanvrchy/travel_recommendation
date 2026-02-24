@@ -7,7 +7,6 @@ fetch("navbar.html")
         const searchBtn = document.getElementById('searchBtn');
         const resetBtn = document.getElementById('resetBtn');
         const bookBtn = document.getElementById('bookBtn');
-        const contactForm = document.getElementById('contactForm');
         const resultsContainer = document.getElementById('searchResults');
 
         let travelData = {};
@@ -153,10 +152,16 @@ fetch("navbar.html")
             resultsContainer.style.display = 'none';
         });
 
-        /* *** Handle form submission *** */
+    })
+    .catch(err => console.error('Error loading navbar:', err));
+
+    document.addEventListener(() => {
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Form submitted! Thank you for contacting us.');
         });
-    })
-    .catch(err => console.error('Error loading navbar:', err));
+    }
+});
