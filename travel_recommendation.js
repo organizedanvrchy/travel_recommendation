@@ -155,13 +155,12 @@ fetch("navbar.html")
     })
     .catch(err => console.error('Error loading navbar:', err));
 
-    document.addEventListener(() => {
-    const contactForm = document.getElementById('contactForm');
+/* *** Handle contact form submission *** */
+const submitBtn = document.getElementById('submitBtn');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Form submitted! Thank you for contacting us.');
-        });
-    }
-});
+if (submitBtn) {
+    submitBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent actual form submission
+        alert('Form submitted! Thank you for contacting us.');
+    });
+}
